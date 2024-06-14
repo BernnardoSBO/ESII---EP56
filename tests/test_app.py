@@ -40,7 +40,7 @@ def test_delete_nonexistent_task(client):
 def test_complete_task(client):
     client.post("/tasks", json={"task": "Test task"})
     response = client.patch("/tasks/0/complete")
-    assert response.status_code == 200
+    assert response.status_code == 201
     assert response.get_json() == {"message": "Task marked as complete!"}
     
 def test_complete_nonexistent_task(client):
